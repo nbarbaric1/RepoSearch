@@ -105,10 +105,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        results.count
+        results.count == 0 ? 1 : results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if results.count == 0 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "No results. Try something different."
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepositoryTableViewCell.self), for: indexPath) as! RepositoryTableViewCell
         cell.configureCell(with: results[indexPath.row])
         return cell

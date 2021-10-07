@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var resultsTableView: UITableView!
+    @IBOutlet private weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     // MARK: - Properties
     
@@ -25,6 +26,8 @@ class SearchViewController: UIViewController {
         configureUI()
     }
 }
+
+// MARK: - Functions
 
 private extension SearchViewController {
     func configureUI() {
@@ -43,12 +46,54 @@ private extension SearchViewController {
         resultsTableView.delegate = self
         resultsTableView.dataSource = self
     }
+    
+    func getRepository(for input: String) {
+        self.loadingActivityIndicatorView.startAnimating()
+        NetworkController.getRepositories(with: input) { (error, dataResponse) in
+            
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.loadingActivityIndicatorView.stopAnimating()
+                    let alert = UIAlertController(title: "An error occured.", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+            
+            if let dataResponse = dataResponse {
+                DispatchQueue.main.async {
+                    self.results = dataResponse.repositories
+                    self.loadingActivityIndicatorView.stopAnimating()
+                    self.resultsTableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 // MARK: - SearchBar Delegate
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(SearchViewController.reload), object: nil)
+        self.perform(#selector(SearchViewController.reload), with: nil, afterDelay: 0.8)
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        search()
+    }
+        
+    @objc func reload() {
+        search()
+    }
+    
+    func search() {
+        guard let searchText = searchBar.text else { return }
+        let input = searchText.trimmingCharacters(in: .whitespaces)
+        if !input.isEmpty {
+            getRepository(for: input)
+        }
+    }
 }
 
 // MARK: - TableView DataSource, Delegate

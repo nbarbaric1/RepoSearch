@@ -45,6 +45,14 @@ private extension SearchViewController {
     }
 }
 
+// MARK: - SearchBar Delegate
+
+extension SearchViewController: UISearchBarDelegate {
+    
+}
+
+// MARK: - TableView DataSource, Delegate
+
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -57,10 +65,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepositoryTableViewCell.self), for: indexPath) as! RepositoryTableViewCell
-        cell.configureCell(with: repositories[indexPath.row])
+        cell.configureCell(with: results[indexPath.row])
         return cell
     }
-    
-    
 }
-

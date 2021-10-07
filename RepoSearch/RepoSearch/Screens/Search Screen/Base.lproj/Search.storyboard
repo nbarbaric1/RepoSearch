@@ -27,7 +27,7 @@
                                 <rect key="frame" x="20" y="158" width="374" height="684"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Eix-r2-7v4" customClass="RepositoryTableViewCell" customModule="RepoSearch" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryTableViewCell" id="Eix-r2-7v4" customClass="RepositoryTableViewCell" customModule="RepoSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eix-r2-7v4" id="wJG-TX-mka">
@@ -91,6 +91,7 @@
                     <navigationItem key="navigationItem" id="lFB-8Q-C3h"/>
                     <connections>
                         <outlet property="resultsTableView" destination="M6b-8h-PsV" id="66u-Ku-hqf"/>
+                        <outlet property="searchBar" destination="p0U-LP-tbl" id="wzo-hs-bmU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

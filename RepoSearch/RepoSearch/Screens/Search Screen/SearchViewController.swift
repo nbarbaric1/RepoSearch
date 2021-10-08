@@ -69,6 +69,14 @@ private extension SearchViewController {
             }
         }
     }
+    
+    func navigateToDetailsScreen(for repository: Repository){
+        let nextScreen = "Details"
+        let storyboard = UIStoryboard(name: nextScreen, bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: String( nextScreen + "ViewController")) as! DetailsViewController
+        nextViewController.repository = repository
+        navigationController?.present(nextViewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - SearchBar Delegate
@@ -118,5 +126,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepositoryTableViewCell.self), for: indexPath) as! RepositoryTableViewCell
         cell.configureCell(with: results[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigateToDetailsScreen(for: results[indexPath.row])
     }
 }

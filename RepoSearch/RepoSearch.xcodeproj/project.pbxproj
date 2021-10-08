@@ -18,6 +18,9 @@
 		93E4795F270F60100035CBAB /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4795E270F60100035CBAB /* NetworkController.swift */; };
 		93E47961270F60710035CBAB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E47960270F60710035CBAB /* ErrorResponse.swift */; };
 		93E47963270F608D0035CBAB /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E47962270F608D0035CBAB /* UserResponse.swift */; };
+		93E47967270F6D9C0035CBAB /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E47966270F6D9C0035CBAB /* Details.storyboard */; };
+		93E47969270F6DB00035CBAB /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E47968270F6DB00035CBAB /* DetailsViewController.swift */; };
+		93E4796B2710F3520035CBAB /* UIView+Modifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4796A2710F3520035CBAB /* UIView+Modifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		93E4795E270F60100035CBAB /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		93E47960270F60710035CBAB /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		93E47962270F608D0035CBAB /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		93E47966270F6D9C0035CBAB /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		93E47968270F6DB00035CBAB /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		93E4796A2710F3520035CBAB /* UIView+Modifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Modifications.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 		93E47952270F04020035CBAB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				93E4796A2710F3520035CBAB /* UIView+Modifications.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -112,6 +119,7 @@
 		93E47956270F04330035CBAB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				93E47965270F6D8C0035CBAB /* Details Screen */,
 				93E47958270F04600035CBAB /* Search Screen */,
 				93E47957270F043E0035CBAB /* Launch Screen */,
 			);
@@ -144,6 +152,15 @@
 				93E47962270F608D0035CBAB /* UserResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		93E47965270F6D8C0035CBAB /* Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				93E47966270F6D9C0035CBAB /* Details.storyboard */,
+				93E47968270F6DB00035CBAB /* DetailsViewController.swift */,
+			);
+			path = "Details Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +224,7 @@
 				93E4794B270F03B60035CBAB /* LaunchScreen.storyboard in Resources */,
 				93E47948270F03B60035CBAB /* Assets.xcassets in Resources */,
 				93E47946270F03B50035CBAB /* Search.storyboard in Resources */,
+				93E47967270F6D9C0035CBAB /* Details.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,11 +237,13 @@
 			files = (
 				93E47943270F03B50035CBAB /* SearchViewController.swift in Sources */,
 				93E4793F270F03B50035CBAB /* AppDelegate.swift in Sources */,
+				93E47969270F6DB00035CBAB /* DetailsViewController.swift in Sources */,
 				93E4795F270F60100035CBAB /* NetworkController.swift in Sources */,
 				93E47963270F608D0035CBAB /* UserResponse.swift in Sources */,
 				93E4795B270F0B6C0035CBAB /* RepositoryResponse.swift in Sources */,
 				93E4795D270F0C750035CBAB /* RepositoryTableViewCell.swift in Sources */,
 				93E47941270F03B50035CBAB /* SceneDelegate.swift in Sources */,
+				93E4796B2710F3520035CBAB /* UIView+Modifications.swift in Sources */,
 				93E47961270F60710035CBAB /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

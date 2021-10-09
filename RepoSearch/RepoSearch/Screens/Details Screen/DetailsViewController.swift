@@ -39,7 +39,8 @@ private extension DetailsViewController {
         guard let repository = repository else { return }
         repositoryNameLabel.text = repository.name
         descriptionLabel.text = repository.repositoryDescription == nil ? "No description" : repository.repositoryDescription
-        updatedAtLabel.text = repository.updatedAt
+        updatedAtLabel.text = repository.updatedAt.replacingOccurrences(of: "Z", with: " ")
+                                                  .replacingOccurrences(of: "T", with: " ")
         containerView.makeRoundedTopCorners(withCornerRadius: 20)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         transparentView.addGestureRecognizer(tapGesture)

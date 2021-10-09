@@ -94,14 +94,12 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        results = []
-        currentPage = 1
-        numberOfPages = 1
-        search()
+        reload()
     }
         
     @objc func reload() {
         results = []
+        resultsTableView.reloadData()
         currentPage = 1
         numberOfPages = 1
         search()
@@ -146,13 +144,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
         if scrollView == resultsTableView {
-            
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
-                print("sapasad")
-                currentPage < numberOfPages ? currentPage = currentPage + 1 : ()
-                search()
+                if currentPage < numberOfPages {
+                    currentPage = currentPage + 1
+                    search()
+                }
             }
         }
     }

@@ -35,6 +35,7 @@ private extension SearchViewController {
     func configureUI() {
         configureSearchBar()
         configureResultsTableView()
+        hideKeyboardWhenTappedAround()
     }
     
     func configureSearchBar() {
@@ -155,6 +156,4 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
-    
 }

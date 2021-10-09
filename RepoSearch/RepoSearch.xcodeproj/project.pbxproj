@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9399441D2711238B008B66ED /* UIViewController+KeyboardHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399441C2711238B008B66ED /* UIViewController+KeyboardHandling.swift */; };
 		93E4793F270F03B50035CBAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4793E270F03B50035CBAB /* AppDelegate.swift */; };
 		93E47941270F03B50035CBAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E47940270F03B50035CBAB /* SceneDelegate.swift */; };
 		93E47943270F03B50035CBAB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E47942270F03B50035CBAB /* SearchViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9399441C2711238B008B66ED /* UIViewController+KeyboardHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+KeyboardHandling.swift"; sourceTree = "<group>"; };
 		93E4793B270F03B50035CBAB /* RepoSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepoSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E4793E270F03B50035CBAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93E47940270F03B50035CBAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				93E4796A2710F3520035CBAB /* UIView+Modifications.swift */,
+				9399441C2711238B008B66ED /* UIViewController+KeyboardHandling.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				93E47943270F03B50035CBAB /* SearchViewController.swift in Sources */,
 				93E4793F270F03B50035CBAB /* AppDelegate.swift in Sources */,
 				93E47969270F6DB00035CBAB /* DetailsViewController.swift in Sources */,
+				9399441D2711238B008B66ED /* UIViewController+KeyboardHandling.swift in Sources */,
 				93E4795F270F60100035CBAB /* NetworkController.swift in Sources */,
 				93E47963270F608D0035CBAB /* UserResponse.swift in Sources */,
 				93E4795B270F0B6C0035CBAB /* RepositoryResponse.swift in Sources */,

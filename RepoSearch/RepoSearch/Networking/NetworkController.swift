@@ -2,10 +2,11 @@ import Foundation
 
 struct NetworkController {
     
-    static func getRepositories(with input: String, completionBlock: @escaping (String?, RepositoryResponse?) -> Void) {
+    static func getRepositories(with input: String, page: Int = 1, completionBlock: @escaping (String?, RepositoryResponse?) -> Void) {
         
         let query = "?q=" + input.replacingOccurrences(of: " ", with: "+")
-        let url = URLPath.base.rawValue + URLPath.searchRepositoresPath.rawValue + query + URLPath.sort.rawValue + URLPath.order.rawValue
+        let page = "&page=" + String(page)
+        let url = URLPath.base.rawValue + URLPath.searchRepositoresPath.rawValue + query + URLPath.sort.rawValue + URLPath.order.rawValue + URLPath.perPage.rawValue + page
         
         guard let url = URL(string: url) else { return }
         
@@ -85,4 +86,5 @@ enum URLPath: String {
     case usersPath = "/users"
     case sort = "&sort=updated"
     case order = "&order=desc"
+    case perPage = "&per_page=30"
 }

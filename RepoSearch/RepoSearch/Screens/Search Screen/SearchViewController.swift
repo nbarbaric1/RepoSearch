@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
     
     private var results: [Repository] = []
+    private var numberOfPages: Int = 1
+    private var currentPage: Int = 1
     
     // MARK: - Lifecycle methods
     
@@ -45,11 +47,12 @@ private extension SearchViewController {
     func configureResultsTableView() {
         resultsTableView.delegate = self
         resultsTableView.dataSource = self
+        resultsTableView.alwaysBounceVertical = false
     }
     
     func getRepository(for input: String) {
         self.loadingActivityIndicatorView.startAnimating()
-        NetworkController.getRepositories(with: input) { (error, dataResponse) in
+        NetworkController.getRepositories(with: input, page: currentPage) { (error, dataResponse) in
             
             if let error = error {
                 DispatchQueue.main.async {
@@ -62,7 +65,9 @@ private extension SearchViewController {
             
             if let dataResponse = dataResponse {
                 DispatchQueue.main.async {
-                    self.results = dataResponse.repositories
+                    let numberOfPages = (dataResponse.totalCount / 30) == 0 ? 1 : dataResponse.totalCount / 30
+                    self.numberOfPages = (dataResponse.totalCount % 30 ) == 0 ? numberOfPages : numberOfPages + 1
+                    self.results.append(contentsOf: dataResponse.repositories)
                     self.loadingActivityIndicatorView.stopAnimating()
                     self.resultsTableView.reloadData()
                 }
@@ -88,10 +93,16 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        results = []
+        currentPage = 1
+        numberOfPages = 1
         search()
     }
         
     @objc func reload() {
+        results = []
+        currentPage = 1
+        numberOfPages = 1
         search()
     }
     
@@ -132,4 +143,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         navigateToDetailsScreen(for: results[indexPath.row])
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if scrollView == resultsTableView {
+            
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+                print("sapasad")
+                currentPage < numberOfPages ? currentPage = currentPage + 1 : ()
+                search()
+            }
+        }
+    }
+    
+    
 }
